@@ -18,9 +18,9 @@ def conv1x1(in_features, out_features, stride=1):
     """1x1 convolution"""
     return nn.Conv1d(in_features, out_features, kernel_size=1, stride=stride, bias=True)
 
-class  CharResCNN(nn.Module):
+class  CharResCNN_GRU(nn.Module):
     def __init__(self, args):
-        super(CharResCNN, self).__init__()
+        super(CharResCNN_GRU, self).__init__()
         self.relu = nn.ReLU(inplace=True)
         self.maxpool1d = nn.MaxPool1d(kernel_size=3, stride=3)
         self.extension1 = conv1x1(128, 256)
