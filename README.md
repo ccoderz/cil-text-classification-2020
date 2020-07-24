@@ -2,8 +2,6 @@
 This is the code repo of project "Twitter Sentiment Classification" in the Computational Intelligence Lab of ETH Zurich, 
 Spring 2020. 
 
-The framework  structure of this repo is inspired by Zhifei Yang: https://github.com/Xivid/cil-text-classification-2018.
-
 The project structure is modified from https://github.com/srviest/char-cnn-text-classification-pytorch
 
 The main idea of this project is to use character-level embedding on user-generated dataset to outperform the 
@@ -19,8 +17,14 @@ CharCNN is mainly based on the model of Zhang's [Character-level Convolutional N
 With a tiny character-level embedding block + multiple layer RNN
 
 
+## Structure
+The framework  structure of this repo is inspired by Zhifei Yang: https://github.com/Xivid/cil-text-classification-2018.
 
-
+* `src/` - source data files required for training/testing/validating.
+    * `models/` - model implementations,
+    * `utils/` - utility methods.
+* `alphabet.json` - list of characters for one hot encoding.
+* `main.py` - training process file.    
 
 
 

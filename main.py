@@ -13,7 +13,7 @@ import sys
 import os
 from src.utils.dataset import TweetsDataset
 from src.utils.func import print_f_score
-from src.models import CharResCNN_GRU, CharCNN, BERTGRU
+from src.models import CharResCNN_GRU, CharCNN, BERTGRU, CSRRes5d
 path = '/home/xiaochenzheng/Desktop/CIL'
 
 parser = argparse.ArgumentParser(description='Character level CNN text classifier training')
@@ -53,7 +53,7 @@ experiment.add_argument('--verbose', dest='verbose', action='store_true', defaul
 experiment.add_argument('--continue_from', default='', help='Continue from checkpoint model, we can use /content/drive/My Drive/cil/models_CharResCNN/CharResCNN_best.pth.tar')
 experiment.add_argument('--checkpoint', dest='checkpoint', default=True, action='store_true', help='Enables checkpoint saving of model')
 experiment.add_argument('--checkpoint_per_batch', default=10000, type=int, help='Save checkpoint per batch. 0 means never save [default: 10000]')
-experiment.add_argument('--save_folder', default='models_CharResCNN_gru_tiny', help='Location to save epoch models, training configurations and results.')
+experiment.add_argument('--save_folder', default='models_CSRRes5d_tiny', help='Location to save epoch models, training configurations and results.')
 experiment.add_argument('--log_config', default=True, action='store_true', help='Store experiment configuration')
 experiment.add_argument('--log_result', default=True, action='store_true', help='Store experiment result')
 experiment.add_argument('--log_interval',  type=int, default=1,   help='how many steps to wait before logging training status [default: 1]')
@@ -310,7 +310,7 @@ def main():
         with open(os.path.join(path, args.save_folder, 'result_res.csv'), 'w') as r:
             r.write('{:s},{:s},{:s},{:s},{:s}'.format('epoch', 'batch', 'loss', 'acc', 'lr'))
     # model
-    model = CharResCNN_GRU(args)
+    model = CSRRes5d(args)
     print(model)
 
     print(f'The model has {count_parameters(model):,} trainable parameters')
