@@ -10,7 +10,7 @@ word-embedding method with pretrained BERT on preprocessed dataset.
 ## Model Architecture
 
 ### Baseline Model
-Bag-of-word and GloVe with linear classifier are baseline models
+Bag-of-word and GloVe with linear classifier are baseline models.
 
 ### CharCNN
 CharCNN is mainly based on the model of Zhang's [Character-level Convolutional Networks for Text Classification](https://arxiv.org/abs/1509.01626).
@@ -34,7 +34,7 @@ Fully connected layers and multiple-layer RNN is applied as the classifier.
 ## Results
 
 With CSR (Character-level Sequence Representation) + residual blcok with downsampling + multiple layer RNN (GRU or LSTM), 
-the model achieve 86.86% accuracy without any fine tuning or learning rate adjusting strategy. The CSR-Res-6-d-GRU can 
+the model achieve 86.86% accuracy without any fine tuning or learning rate adjustment strategy. The CSR-Res-6-d-GRU can 
 outperform the word embedding model with pretrained BERT which is trained on cleaned dataset instead of user generated dataset.  
 
 | Model            | Acc           | Param Size  |
