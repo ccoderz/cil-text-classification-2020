@@ -21,9 +21,9 @@ def conv1x1(in_features, out_features, stride=1):
     return nn.Conv1d(in_features, out_features, kernel_size=1, stride=stride, bias=True)
 
 
-class CSRRes5d(nn.Module):
+class CSRRes4d(nn.Module):
     def __init__(self, args):
-        super(CSRRes5d, self).__init__()
+        super(CSRRes4d, self).__init__()
         self.relu = nn.ReLU(inplace=True)
         self.maxpool1d = nn.MaxPool1d(kernel_size=3, stride=3)
         self.conv1 = nn.Sequential(

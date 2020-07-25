@@ -2,10 +2,10 @@
 from .CharCNN import CharCNN
 from .CharResCNN_GRU import CharResCNN_GRU
 from .BERT_GRU import BERTGRU
-from .CSR_Res_5_d_GRU import CSRRes5d
-from .CSR_Res_5_GRU import CSRRes5
+from .CSR_Res_4_d_GRU import CSRRes4d
+from .CSR_Res_4_GRU import CSRRes4
 
-__all__ = ('CharCNN', 'CharResCNN_GRU', 'BERTGRU', 'CSR_Res_5_d_GRU', 'CSR_Res_5_GRU')
+__all__ = ('CharCNN', 'CharResCNN_GRU', 'BERTGRU', 'CSR_Res_4_d_GRU', 'CSR_Res_4_GRU')
 
 
 def get_model(name):
@@ -15,9 +15,9 @@ def get_model(name):
         return CharResCNN_GRU
     elif name == 'BERT_GRU':
         return BERT_GRU
-    elif name == 'CSR_Res_5_d_GRU':
-        return CSRRes5d
-    elif name == 'CSR_Res_5_GRU':
-        return CSRRes5
+    elif name == 'CSR_Res_4_d_GRU':
+        return CSRRes4d
+    elif name == 'CSR_Res_4_GRU':
+        return CSRRes4
     else:
         raise NotImplementedError("No model named \"%s\"!" % name)
