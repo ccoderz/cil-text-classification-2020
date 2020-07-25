@@ -14,6 +14,8 @@ CharCNN is mainly based on the model of Zhang's [Character-level Convolutional N
 
 ## Character-level Sequence Representation with Resdiual Block (CSR-Res)
 
+![Illustration of my model](https://github.com/xcvil/User-Generated-Context-Classification/blob/master/model.png)
+
 ## Results
 
 With CSR (Character-level Sequence Representation) + residual blcok with downsampling + multiple layer RNN (GRU or LSTM), 
