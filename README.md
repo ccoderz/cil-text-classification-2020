@@ -12,9 +12,26 @@ word-embedding method with pretrained BERT on preprocessed dataset.
 ### CharCNN
 CharCNN is mainly based on the model of Zhang's [Character-level Convolutional Networks for Text Classification](https://arxiv.org/abs/1509.01626)
 
+## Character-level Sequence Representation with Resdiual Block (CSR-Res)
 
+## Results
 
-With a tiny character-level embedding block + multiple layer RNN
+With CSR (Character-level Sequence Representation) + residual blcok with downsampling + multiple layer RNN (GRU or LSTM), 
+the model achieve 86.86% accuracy without any fine tuning or learning rate adjusting strategy. The CSR-Res-6-d-GRU can 
+outperform the word embedding model with pretrained BERT which is trained on cleaned dataset instead of user generated dataset.  
+
+| Model            | Acc           | Param Size  |
+| ---------------- |:-------------:| -----------:|
+| BERT-GRU-raw     | 84.68%        | 3.5M        |
+| BERT-GRU-cleaned | 86.32%        | 3.5M        |
+| CharCNN          | 84.90%        | 6.6M        |
+| CharCNN-GRU      | 85.90%        | 5.4M        |
+| CSR-Res-4-GRU    | 85.86%        | 3.5M        |
+| CSR-Res-4-d-LSTM | 86.34%        | 3.5M        |
+| CSR-Res-4-d-GRU  | 86.22%        | 3.5M        |
+| CSR-Res-6-GRU    | 86.52%        | 3.9M        | 
+| CSR-Res-6-d-GRU  | 86.86% x      | 3.9M        |
+
 
 
 ## Structure
