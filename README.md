@@ -10,10 +10,15 @@ word-embedding method with pretrained BERT on preprocessed dataset.
 ## Model Architecture
 
 ### CharCNN
-CharCNN is mainly based on the model of Zhang's [Character-level Convolutional Networks for Text Classification](https://arxiv.org/abs/1509.01626)
+CharCNN is mainly based on the model of Zhang's [Character-level Convolutional Networks for Text Classification](https://arxiv.org/abs/1509.01626).
 
 ## Character-level Sequence Representation with Resdiual Block (CSR-Res)
-
+Inspired by CharCNN, we modify the original CharCNN and add residual layers. The bottleneck block is introduced which consists of
+convolutional and maxpooling layers. The residual block only contains one convolutional layer. For the residual block which increases the channels,
+a two stride convolutional layer is applied. In order to match the dimensions, we also apply a convolutional layer with 
+kernel size and stride equal to one and two respectively to the identity shortcut which we call downsampling layer. We use character-level
+sequence representation with residual block (CSR-Res) as the character embedding model, performing the same as word embedding model like BERT.
+The detailed CSR-Res is shown below.
 ![Illustration of my model](https://github.com/xcvil/User-Generated-Context-Classification/blob/master/model.png)
 
 ## Results
