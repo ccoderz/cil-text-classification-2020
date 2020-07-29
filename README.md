@@ -57,11 +57,12 @@ The framework  structure of this repo is inspired by Zhifei Yang: https://github
 * `src/` - source data files required for training/testing/validating.
     * `models/` - model implementations,
     * `utils/` - utility methods.
-* `aux-data` - auxiliary data from GloVe (pretrained GloVe weights)\
+* `aux-data` - auxiliary data from GloVe (pretrained GloVe weights).
 * `results` - store checkpoints.
 * `stanford_glove_preprocessed` - the dataset which are preprocessed by GloVe.
 * `alphabet.json` - list of characters for one hot encoding.
-* `main.py` - training process file.    
+* `main.py` - training process file.  
+* `train_clear.py` - a cleaner training framework which is used to train the CharWordCNN model.  
 
 
 
