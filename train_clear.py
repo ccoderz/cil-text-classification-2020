@@ -10,7 +10,7 @@ from torch import optim
 from torch import nn
 from sklearn import metrics
 import os
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 tqdm.pandas()
 
 ROOT_PATH = '/home/xiaochenzheng/DLProjects/cil-text-classification-2020'
@@ -22,7 +22,7 @@ class Obj:
 
 args = Obj()
 args.checkpoint_save_to_dir = os.path.join(ROOT_PATH, 'results', 'checkpoints')
-args.checkpoint_continue_from = None # os.path.join(ROOT_PATH, 'results', 'checkpoints', '...') --> just set this inline wherever most convenient
+args.checkpoint_continue_from = '' # os.path.join(ROOT_PATH, 'results', 'checkpoints', '...') --> just set this inline wherever most convenient
 args.cuda = False
 args.epochs = 10
 args.max_norm = 1e3
@@ -138,7 +138,7 @@ def main():
 
     # train_dataset = TweetsAsCharsAndWordsDataset(TWEETS_TRAIN_FILENAME, ALPHABET_PATH, is_labeled=True)
     train_dataset = TweetsAsCharsAndWordsDataset(TWEETS_TRAIN_FILENAME, ALPHABET_PATH, is_labeled=True,
-                                                 max_samples=args.max_samples, vector_cache_path=os.path.join(ROOT_PATH, "aux-data"))
+                                                 max_samples=args.max_samples, vector_cache_path=os.path.join(ROOT_PATH, 'aux-data'))
     assert train_dataset.raw_nb_feats == ALPHABET_SIZE
 
     if args.val_frac:
@@ -274,8 +274,10 @@ def main():
     print(f'finished the required number of epochs args.epoch={args.epoch}')
 
 
-def predict():
-    test_dataset = TweetsAsCharsAndWordsDataset(TWEETS_TEST_FILENAME, ALPHABET_PATH, is_labeled=False)
+def pred():
+    args.checkpoint_continue_from = os.path.join(ROOT_PATH, 'results', 'checkpoints',
+                                                 'CharAndWordCNNv3_epoch_4_2020-07-28T21_08_45.530055.pth.tar')
+    test_dataset = TweetsAsCharsAndWordsDataset(TWEETS_TEST_FILENAME, ALPHABET_PATH, is_labeled=False, vector_cache_path=os.path.join(ROOT_PATH, 'aux-data'))
     assert test_dataset.raw_nb_feats == ALPHABET_SIZE
     test_dataloader = DataLoader(test_dataset,
                                  batch_size=1,
@@ -295,7 +297,7 @@ def predict():
 
     print(f'=> loading checkpoint from {args.checkpoint_continue_from}')
     checkpoint = load_checkpoint(model, optimizer,
-                                 args.checkpoint_continue_from)  # load the state to `model` and `optimizer` and fetch the remaining info into `checkpoint`
+                                 args.checkpoint_continue_from, args)  # load the state to `model` and `optimizer` and fetch the remaining info into `checkpoint`
 
     y_pred = predict(test_dataloader, model)
 
@@ -311,4 +313,5 @@ def predict():
 
 
 if __name__ == '__main__':
+    # pred()
     main()
