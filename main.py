@@ -11,9 +11,9 @@ import torch
 import json
 import sys
 import os
-from src.utils.dataset import TweetsDataset
+from src.utils.dataset import TweetsDataset, TweetsAsCharsAndWordsDataset
 from src.utils.func import print_f_score
-from src.models import CharResCNN_GRU, CharCNN, BERTGRU, CSRRes5d
+from src.models import CSRRes4d
 path = '/home/xiaochenzheng/Desktop/CIL'
 
 parser = argparse.ArgumentParser(description='Character level CNN text classifier training')
@@ -310,7 +310,7 @@ def main():
         with open(os.path.join(path, args.save_folder, 'result_res.csv'), 'w') as r:
             r.write('{:s},{:s},{:s},{:s},{:s}'.format('epoch', 'batch', 'loss', 'acc', 'lr'))
     # model
-    model = CSRRes5d(args)
+    model = CSRRes4d(args)
     print(model)
 
     print(f'The model has {count_parameters(model):,} trainable parameters')
