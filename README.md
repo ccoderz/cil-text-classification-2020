@@ -26,6 +26,8 @@ The detailed CSR-Res is shown below.
 
 
 ![Illustration of my model](https://github.com/xcvil/User-Generated-Context-Classification/blob/master/model.png)
+![Illustration of my model](https://github.com/xcvil/User-Generated-Context-Classification/blob/master/WordCharCNN.png)
+
 
 ### Classifier
 Fully connected layers and multiple-layer RNN is applied as the classifier.
